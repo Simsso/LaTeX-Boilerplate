@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+% configuration
+\input{config/main}
+
+
+\begin{document} 
+
+	\input{content/titlepage}  % title page
+
+	\input{content/restriction-notice}  % restriction notice
+	\input{content/abstract}  % abstract
+
+	\newpage
+
+	% table of contents, figures, tables, code, references, acronyms
+	\input{content/lists/toc}
+	\input{content/lists/figures}
+	\input{content/lists/tables}
+	\input{content/lists/listings}
+	\input{content/lists/acronyms}
+
+	\newpage
+
+	% main document
+	\input{content/main}  % content
+	\input{content/references}  % bibliography
+
+	\input{content/appendix}  % appendix
+
+\end{document}

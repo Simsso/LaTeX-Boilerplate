@@ -1,0 +1,60 @@
+% schematics
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+\usepackage{graphicx}  % importing images and more
+\usepackage{float}  % graphics positioning
+\graphicspath{ {resources/} }
+
+\usepackage{abstract}
+\renewcommand{\abstractname}{}  % clear abstract title
+
+\usepackage[printonlyused]{acronym}  % acronyms
+
+% multiple columns
+\usepackage{multicol}
+\usepackage{float}
+
+% links
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}  % remove box around links
+
+% new paragraph spacing and indent
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% line spacing
+\renewcommand{\baselinestretch}{1.2}
+\usepackage{setspace}
+
+% footnotes in tables and table captions
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+
+% nested lists (enumerations) with numbers
+% https://tex.stackexchange.com/questions/78842/nested-enumeration-numbering
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
+
+
+% enable German quotes
+\usepackage[babel,german=quotes]{csquotes}
+
+% import other config files
+\input{config/colors}
+\input{config/listings}  % code configuration (syntax highlighting, etc.)
+\input{config/math}  % math config
+
+
+% line spacing between items in the table of contents and list of listings
+% for the list of listings this needs to be placed after the code configuration (i.e. usepackage commands)
+% partly taken from https://tex.stackexchange.com/questions/56546/how-to-change-spaces-between-items-in-table-of-contents
+\usepackage{etoolbox}
+\makeatletter
+	\pretocmd{\section}{\addtocontents{toc}{\protect\addvspace{-5\p@}}}{}{}
+	\pretocmd{\subsection}{\addtocontents{toc}{\protect\addvspace{-5\p@}}}{}{}
+	\pretocmd{\subsubsection}{\addtocontents{toc}{\protect\addvspace{-5\p@}}}{}{}
+	% line spacing between items in the list of listings (lol)
+	\pretocmd{\lstinputlisting}{\addtocontents{lol}{\protect\addvspace{6\p@}}}{}{}
+\makeatother
