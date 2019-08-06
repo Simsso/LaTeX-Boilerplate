@@ -37,15 +37,10 @@
 \renewcommand{\labelenumii}{\theenumii}
 \renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
 
-
-% enable German quotes
-\usepackage[babel,german=quotes]{csquotes}
-
 % import other config files
 \input{config/colors}
 \input{config/listings}  % code configuration (syntax highlighting, etc.)
 \input{config/math}  % math config
-
 
 % line spacing between items in the table of contents and list of listings
 % for the list of listings this needs to be placed after the code configuration (i.e. usepackage commands)
@@ -58,3 +53,9 @@
 	% line spacing between items in the list of listings (lol)
 	\pretocmd{\lstinputlisting}{\addtocontents{lol}{\protect\addvspace{6\p@}}}{}{}
 \makeatother
+
+% bracket fix (see https://tex.stackexchange.com/questions/2607)
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
